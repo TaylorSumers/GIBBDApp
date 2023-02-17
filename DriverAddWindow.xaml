@@ -1,0 +1,61 @@
+﻿<Window x:Class="GIBBDApp.DriverAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GIBBDApp"
+        mc:Ignorable="d"
+        Title="Водитель" Height="800" Width="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Margin="5">
+            <TextBlock Text="Фамилия" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Имя" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Отчество" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Опыт" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Дата рождения" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Адрес" FontSize="25" Margin="0, 10"/>
+            <TextBlock Text="Индекс" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Область" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Город" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Улица" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Дом" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Паспорт" FontSize="25" Margin="0, 10"/>
+            <TextBlock Text="Серия" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Номер" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Выдан" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="К/п" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Права" FontSize="25" Margin="0, 10"/>
+            <TextBlock Text="Серия" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Номер" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="Выдан" FontSize="20" Margin="0, 2"/>
+            <TextBlock Text="К/п" FontSize="20" Margin="0, 2"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="5">
+            <TextBox Name="tbxName" FontSize="18" Margin="0,2,10,0" Text="{Binding DriverName}"/>
+            <TextBox Name="tbxSurname" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverSurname}"/>
+            <TextBox Name="tbxPatronymic" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverPatronymic}"/>
+            <TextBox Name="tbxExperience" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverExperience}"/>
+            <DatePicker Name="dtpDateOfBirth" FontSize="15" Margin="0,5,10,0" SelectedDate="{Binding DriverDateOfBirth}"/>
+            <TextBox Name="tbxPostCode" FontSize="18" Margin="0,55,10,0" Text="{Binding PostCode}"/>
+            <ComboBox Name="cbxRegion" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="RegionID" DisplayMemberPath="RegionName" SelectedValue="{Binding Region}"/>
+            <ComboBox Name="cbxCity" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="CityID" DisplayMemberPath="CityName" SelectedValue="{Binding City}"/>
+            <ComboBox Name="cbxStreet" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="StreetID" DisplayMemberPath="StreetName" SelectedValue="{Binding Street}"/>
+            <TextBox Name="tbxHouse" FontSize="18" Margin="0,5,10,0" Text="{Binding House}"/>
+            <TextBox Name="tbxPassSeries" FontSize="18" Margin="0,55,10,0" Text="{Binding PassportSeries}"/>
+            <TextBox Name="tbxPassNum" FontSize="18" Margin="0,5,10,0" Text="{Binding PassportNum}"/>
+            <ComboBox Name="cbxPassOrg" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="OrgNameID" DisplayMemberPath="OrganizationName" SelectedValue="{Binding PassportIssueOrg}"/>
+            <TextBox Name="tbxPassDept" FontSize="18" Margin="0,5,10,0"/>
+            <TextBox Name="tbxLicSeries" FontSize="18" Margin="0,55,10,0"/>
+            <TextBox Name="tbxLicNum" FontSize="18" Margin="0,5,10,0"/>
+            <ComboBox Name="cbxLicOrg" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="OrgNameID" DisplayMemberPath="OrganizationName"/>
+            <TextBox Name="tbxLicDept" FontSize="18" Margin="0,5,10,0"/>
+        </StackPanel>
+        <Button Name="btnSave" Content="Сохранить" FontSize="15" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="30" Width="150" Margin="10" Click="btnSave_Click"/>
+    </Grid>
+</Window>

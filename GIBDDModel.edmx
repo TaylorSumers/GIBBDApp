@@ -1,0 +1,1349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GIBDD_Suv_DorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostCode" Type="int" />
+          <Property Name="Region" Type="int" Nullable="false" />
+          <Property Name="City" Type="int" />
+          <Property Name="Street" Type="int" />
+          <Property Name="House" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarOwner" Type="int" Nullable="false" />
+          <Property Name="CarRegistrationDate" Type="date" Nullable="false" />
+          <Property Name="vin" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentsIssueOrganization">
+          <Key>
+            <PropertyRef Name="OrgID" />
+          </Key>
+          <Property Name="OrgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgName" Type="int" Nullable="false" />
+          <Property Name="DeptCode" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverSurname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DriverPatronymic" Type="varchar" MaxLength="30" />
+          <Property Name="DriverAddress" Type="int" />
+          <Property Name="DriverExperience" Type="int" />
+          <Property Name="DriverDateOfBirth" Type="date" />
+        </EntityType>
+        <EntityType Name="Driver_Insurance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Insurance" Type="int" Nullable="false" />
+          <Property Name="Driver" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DriverLicense">
+          <Key>
+            <PropertyRef Name="LisenseID" />
+          </Key>
+          <Property Name="LisenseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicensetSeries" Type="int" Nullable="false" />
+          <Property Name="LicensetNum" Type="int" Nullable="false" />
+          <Property Name="LicenseIssueOrg" Type="int" Nullable="false" />
+          <Property Name="LicneseDriver" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceID" />
+          </Key>
+          <Property Name="InsuranceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InsuranceCar" Type="int" />
+          <Property Name="InsuranceCompany" Type="int" />
+          <Property Name="InsurancePayment" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InsuranceCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgName">
+          <Key>
+            <PropertyRef Name="OrgNameID" />
+          </Key>
+          <Property Name="OrgNameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnerChangeHistory">
+          <Key>
+            <PropertyRef Name="ChangeID" />
+          </Key>
+          <Property Name="ChangeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChangeCar" Type="int" Nullable="false" />
+          <Property Name="NewOwner" Type="int" Nullable="false" />
+          <Property Name="StartOwningDate" Type="date" Nullable="false" />
+          <Property Name="EndOwningDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="PassportID" />
+          </Key>
+          <Property Name="PassportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportSeries" Type="int" Nullable="false" />
+          <Property Name="PassportNum" Type="int" Nullable="false" />
+          <Property Name="PassportIssueOrg" Type="int" Nullable="false" />
+          <Property Name="PassportDriver" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetID" />
+          </Key>
+          <Property Name="StreetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheftFoundedCar">
+          <Key>
+            <PropertyRef Name="CaseID" />
+          </Key>
+          <Property Name="CaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaseCar" Type="int" Nullable="false" />
+          <Property Name="CaseDate" Type="date" Nullable="false" />
+          <Property Name="CaseAddress" Type="int" Nullable="false" />
+          <Property Name="CaseStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehiclePassport">
+          <Key>
+            <PropertyRef Name="VehiclePassportID" />
+          </Key>
+          <Property Name="VehiclePassportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehiclePassportCar" Type="int" Nullable="false" />
+          <Property Name="VehiclePassportNum" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EngineNum" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CarGovNum" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CarBrand" Type="int" Nullable="false" />
+          <Property Name="CarModel" Type="int" />
+          <Property Name="ManufactureYear" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Address__City__3E52440B">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__Region__3F466844">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__Street__403A8C7D">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Car__CarOwner__33D4B598">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Car" Type="Self.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Documents__OrgNa__4AB81AF0">
+          <End Role="OrgName" Type="Self.OrgName" Multiplicity="1" />
+          <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgName">
+              <PropertyRef Name="OrgNameID" />
+            </Principal>
+            <Dependent Role="DocumentsIssueOrganization">
+              <PropertyRef Name="OrgName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver_In__Drive__76969D2E">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Driver_Insurance" Type="Self.Driver_Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Driver_Insurance">
+              <PropertyRef Name="Driver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver_In__Insur__75A278F5">
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
+          <End Role="Driver_Insurance" Type="Self.Driver_Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="InsuranceID" />
+            </Principal>
+            <Dependent Role="Driver_Insurance">
+              <PropertyRef Name="Insurance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DriverLic__Licen__2E1BDC42">
+          <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="1" />
+          <End Role="DriverLicense" Type="Self.DriverLicense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentsIssueOrganization">
+              <PropertyRef Name="OrgID" />
+            </Principal>
+            <Dependent Role="DriverLicense">
+              <PropertyRef Name="LicenseIssueOrg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DriverLic__Licne__2F10007B">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="DriverLicense" Type="Self.DriverLicense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="DriverLicense">
+              <PropertyRef Name="LicneseDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Insur__47DBAE45">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="InsuranceCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Insur__5165187F">
+          <End Role="InsuranceCompany" Type="Self.InsuranceCompany" Multiplicity="0..1" />
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceCompany">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="InsuranceCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Owner__OwnerAddr__1367E606">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="DriverAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OwnerChan__Chang__49C3F6B7">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="OwnerChangeHistory" Type="Self.OwnerChangeHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="OwnerChangeHistory">
+              <PropertyRef Name="ChangeCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OwnerChan__NewOw__52593CB8">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="OwnerChangeHistory" Type="Self.OwnerChangeHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="OwnerChangeHistory">
+              <PropertyRef Name="NewOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passport__Passpo__286302EC">
+          <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentsIssueOrganization">
+              <PropertyRef Name="OrgID" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="PassportIssueOrg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passport__Passpo__29572725">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="PassportDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TheftFoun__CaseA__4D94879B">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="TheftFoundedCar">
+              <PropertyRef Name="CaseAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TheftFoun__CaseC__4E88ABD4">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="TheftFoundedCar">
+              <PropertyRef Name="CaseCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TheftFoun__CaseS__5812160E">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="TheftFoundedCar">
+              <PropertyRef Name="CaseStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehiclePa__CarBr__4F7CD00D">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="VehiclePassport" Type="Self.VehiclePassport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="VehiclePassport">
+              <PropertyRef Name="CarBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehiclePa__CarMo__5070F446">
+          <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
+          <End Role="VehiclePassport" Type="Self.VehiclePassport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="VehiclePassport">
+              <PropertyRef Name="CarModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehiclePa__Vehic__5165187F">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="VehiclePassport" Type="Self.VehiclePassport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="VehiclePassport">
+              <PropertyRef Name="VehiclePassportCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GIBDD_Suv_DorModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentsIssueOrganization" EntityType="Self.DocumentsIssueOrganization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver_Insurance" EntityType="Self.Driver_Insurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DriverLicense" EntityType="Self.DriverLicense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrgName" EntityType="Self.OrgName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerChangeHistory" EntityType="Self.OwnerChangeHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheftFoundedCar" EntityType="Self.TheftFoundedCar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehiclePassport" EntityType="Self.VehiclePassport" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Address__City__3E52440B" Association="Self.FK__Address__City__3E52440B">
+            <End Role="City" EntitySet="City" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__Region__3F466844" Association="Self.FK__Address__Region__3F466844">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__Street__403A8C7D" Association="Self.FK__Address__Street__403A8C7D">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Car__CarOwner__33D4B598" Association="Self.FK__Car__CarOwner__33D4B598">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Documents__OrgNa__4AB81AF0" Association="Self.FK__Documents__OrgNa__4AB81AF0">
+            <End Role="OrgName" EntitySet="OrgName" />
+            <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver_In__Drive__76969D2E" Association="Self.FK__Driver_In__Drive__76969D2E">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Driver_Insurance" EntitySet="Driver_Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver_In__Insur__75A278F5" Association="Self.FK__Driver_In__Insur__75A278F5">
+            <End Role="Insurance" EntitySet="Insurance" />
+            <End Role="Driver_Insurance" EntitySet="Driver_Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DriverLic__Licen__2E1BDC42" Association="Self.FK__DriverLic__Licen__2E1BDC42">
+            <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
+            <End Role="DriverLicense" EntitySet="DriverLicense" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DriverLic__Licne__2F10007B" Association="Self.FK__DriverLic__Licne__2F10007B">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="DriverLicense" EntitySet="DriverLicense" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Insur__47DBAE45" Association="Self.FK__Insurance__Insur__47DBAE45">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Insurance" EntitySet="Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Insur__5165187F" Association="Self.FK__Insurance__Insur__5165187F">
+            <End Role="InsuranceCompany" EntitySet="InsuranceCompany" />
+            <End Role="Insurance" EntitySet="Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Owner__OwnerAddr__1367E606" Association="Self.FK__Owner__OwnerAddr__1367E606">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OwnerChan__Chang__49C3F6B7" Association="Self.FK__OwnerChan__Chang__49C3F6B7">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="OwnerChangeHistory" EntitySet="OwnerChangeHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OwnerChan__NewOw__52593CB8" Association="Self.FK__OwnerChan__NewOw__52593CB8">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="OwnerChangeHistory" EntitySet="OwnerChangeHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passport__Passpo__286302EC" Association="Self.FK__Passport__Passpo__286302EC">
+            <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passport__Passpo__29572725" Association="Self.FK__Passport__Passpo__29572725">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TheftFoun__CaseA__4D94879B" Association="Self.FK__TheftFoun__CaseA__4D94879B">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TheftFoun__CaseC__4E88ABD4" Association="Self.FK__TheftFoun__CaseC__4E88ABD4">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TheftFoun__CaseS__5812160E" Association="Self.FK__TheftFoun__CaseS__5812160E">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehiclePa__CarBr__4F7CD00D" Association="Self.FK__VehiclePa__CarBr__4F7CD00D">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="VehiclePassport" EntitySet="VehiclePassport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehiclePa__CarMo__5070F446" Association="Self.FK__VehiclePa__CarMo__5070F446">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="VehiclePassport" EntitySet="VehiclePassport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehiclePa__Vehic__5165187F" Association="Self.FK__VehiclePa__Vehic__5165187F">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="VehiclePassport" EntitySet="VehiclePassport" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GIBDD_Suv_DorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostCode" Type="Int32" />
+          <Property Name="Region" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Street" Type="Int32" />
+          <Property Name="House" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City1" Relationship="Self.FK__Address__City__3E52440B" FromRole="Address" ToRole="City" />
+          <NavigationProperty Name="Region1" Relationship="Self.FK__Address__Region__3F466844" FromRole="Address" ToRole="Region" />
+          <NavigationProperty Name="Street1" Relationship="Self.FK__Address__Street__403A8C7D" FromRole="Address" ToRole="Street" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__Owner__OwnerAddr__1367E606" FromRole="Address" ToRole="Driver" />
+          <NavigationProperty Name="TheftFoundedCar" Relationship="Self.FK__TheftFoun__CaseA__4D94879B" FromRole="Address" ToRole="TheftFoundedCar" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VehiclePassport" Relationship="Self.FK__VehiclePa__CarBr__4F7CD00D" FromRole="Brand" ToRole="VehiclePassport" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarOwner" Type="Int32" Nullable="false" />
+          <Property Name="CarRegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="vin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__Car__CarOwner__33D4B598" FromRole="Car" ToRole="Driver" />
+          <NavigationProperty Name="Insurance" Relationship="Self.FK__Insurance__Insur__47DBAE45" FromRole="Car" ToRole="Insurance" />
+          <NavigationProperty Name="OwnerChangeHistory" Relationship="Self.FK__OwnerChan__Chang__49C3F6B7" FromRole="Car" ToRole="OwnerChangeHistory" />
+          <NavigationProperty Name="TheftFoundedCar" Relationship="Self.FK__TheftFoun__CaseC__4E88ABD4" FromRole="Car" ToRole="TheftFoundedCar" />
+          <NavigationProperty Name="VehiclePassport" Relationship="Self.FK__VehiclePa__Vehic__5165187F" FromRole="Car" ToRole="VehiclePassport" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__City__3E52440B" FromRole="City" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="DocumentsIssueOrganization">
+          <Key>
+            <PropertyRef Name="OrgID" />
+          </Key>
+          <Property Name="OrgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgName" Type="Int32" Nullable="false" />
+          <Property Name="DeptCode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrgName1" Relationship="Self.FK__Documents__OrgNa__4AB81AF0" FromRole="DocumentsIssueOrganization" ToRole="OrgName" />
+          <NavigationProperty Name="DriverLicense" Relationship="Self.FK__DriverLic__Licen__2E1BDC42" FromRole="DocumentsIssueOrganization" ToRole="DriverLicense" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK__Passport__Passpo__286302EC" FromRole="DocumentsIssueOrganization" ToRole="Passport" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverPatronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DriverAddress" Type="Int32" />
+          <Property Name="DriverExperience" Type="Int32" />
+          <Property Name="DriverDateOfBirth" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Owner__OwnerAddr__1367E606" FromRole="Driver" ToRole="Address" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__Car__CarOwner__33D4B598" FromRole="Driver" ToRole="Car" />
+          <NavigationProperty Name="Driver_Insurance" Relationship="Self.FK__Driver_In__Drive__76969D2E" FromRole="Driver" ToRole="Driver_Insurance" />
+          <NavigationProperty Name="DriverLicense" Relationship="Self.FK__DriverLic__Licne__2F10007B" FromRole="Driver" ToRole="DriverLicense" />
+          <NavigationProperty Name="OwnerChangeHistory" Relationship="Self.FK__OwnerChan__NewOw__52593CB8" FromRole="Driver" ToRole="OwnerChangeHistory" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK__Passport__Passpo__29572725" FromRole="Driver" ToRole="Passport" />
+        </EntityType>
+        <EntityType Name="Driver_Insurance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Insurance" Type="Int32" Nullable="false" />
+          <Property Name="Driver" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Driver1" Relationship="Self.FK__Driver_In__Drive__76969D2E" FromRole="Driver_Insurance" ToRole="Driver" />
+          <NavigationProperty Name="Insurance1" Relationship="Self.FK__Driver_In__Insur__75A278F5" FromRole="Driver_Insurance" ToRole="Insurance" />
+        </EntityType>
+        <EntityType Name="DriverLicense">
+          <Key>
+            <PropertyRef Name="LisenseID" />
+          </Key>
+          <Property Name="LisenseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicensetSeries" Type="Int32" Nullable="false" />
+          <Property Name="LicensetNum" Type="Int32" Nullable="false" />
+          <Property Name="LicenseIssueOrg" Type="Int32" Nullable="false" />
+          <Property Name="LicneseDriver" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DocumentsIssueOrganization" Relationship="Self.FK__DriverLic__Licen__2E1BDC42" FromRole="DriverLicense" ToRole="DocumentsIssueOrganization" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__DriverLic__Licne__2F10007B" FromRole="DriverLicense" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceID" />
+          </Key>
+          <Property Name="InsuranceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InsuranceCar" Type="Int32" />
+          <Property Name="InsuranceCompany" Type="Int32" />
+          <Property Name="InsurancePayment" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__Insurance__Insur__47DBAE45" FromRole="Insurance" ToRole="Car" />
+          <NavigationProperty Name="Driver_Insurance" Relationship="Self.FK__Driver_In__Insur__75A278F5" FromRole="Insurance" ToRole="Driver_Insurance" />
+          <NavigationProperty Name="InsuranceCompany1" Relationship="Self.FK__Insurance__Insur__5165187F" FromRole="Insurance" ToRole="InsuranceCompany" />
+        </EntityType>
+        <EntityType Name="InsuranceCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Insurance" Relationship="Self.FK__Insurance__Insur__5165187F" FromRole="InsuranceCompany" ToRole="Insurance" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VehiclePassport" Relationship="Self.FK__VehiclePa__CarMo__5070F446" FromRole="Model" ToRole="VehiclePassport" />
+        </EntityType>
+        <EntityType Name="OrgName">
+          <Key>
+            <PropertyRef Name="OrgNameID" />
+          </Key>
+          <Property Name="OrgNameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DocumentsIssueOrganization" Relationship="Self.FK__Documents__OrgNa__4AB81AF0" FromRole="OrgName" ToRole="DocumentsIssueOrganization" />
+        </EntityType>
+        <EntityType Name="OwnerChangeHistory">
+          <Key>
+            <PropertyRef Name="ChangeID" />
+          </Key>
+          <Property Name="ChangeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChangeCar" Type="Int32" Nullable="false" />
+          <Property Name="NewOwner" Type="Int32" Nullable="false" />
+          <Property Name="StartOwningDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndOwningDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__OwnerChan__Chang__49C3F6B7" FromRole="OwnerChangeHistory" ToRole="Car" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__OwnerChan__NewOw__52593CB8" FromRole="OwnerChangeHistory" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="PassportID" />
+          </Key>
+          <Property Name="PassportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportSeries" Type="Int32" Nullable="false" />
+          <Property Name="PassportNum" Type="Int32" Nullable="false" />
+          <Property Name="PassportIssueOrg" Type="Int32" Nullable="false" />
+          <Property Name="PassportDriver" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DocumentsIssueOrganization" Relationship="Self.FK__Passport__Passpo__286302EC" FromRole="Passport" ToRole="DocumentsIssueOrganization" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__Passport__Passpo__29572725" FromRole="Passport" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__Region__3F466844" FromRole="Region" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TheftFoundedCar" Relationship="Self.FK__TheftFoun__CaseS__5812160E" FromRole="Status" ToRole="TheftFoundedCar" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetID" />
+          </Key>
+          <Property Name="StreetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__Street__403A8C7D" FromRole="Street" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="TheftFoundedCar">
+          <Key>
+            <PropertyRef Name="CaseID" />
+          </Key>
+          <Property Name="CaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseCar" Type="Int32" Nullable="false" />
+          <Property Name="CaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CaseAddress" Type="Int32" Nullable="false" />
+          <Property Name="CaseStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__TheftFoun__CaseA__4D94879B" FromRole="TheftFoundedCar" ToRole="Address" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__TheftFoun__CaseC__4E88ABD4" FromRole="TheftFoundedCar" ToRole="Car" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__TheftFoun__CaseS__5812160E" FromRole="TheftFoundedCar" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="VehiclePassport">
+          <Key>
+            <PropertyRef Name="VehiclePassportID" />
+          </Key>
+          <Property Name="VehiclePassportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehiclePassportCar" Type="Int32" Nullable="false" />
+          <Property Name="VehiclePassportNum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EngineNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarGovNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarBrand" Type="Int32" Nullable="false" />
+          <Property Name="CarModel" Type="Int32" />
+          <Property Name="ManufactureYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK__VehiclePa__CarBr__4F7CD00D" FromRole="VehiclePassport" ToRole="Brand" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__VehiclePa__Vehic__5165187F" FromRole="VehiclePassport" ToRole="Car" />
+          <NavigationProperty Name="Model" Relationship="Self.FK__VehiclePa__CarMo__5070F446" FromRole="VehiclePassport" ToRole="Model" />
+        </EntityType>
+        <Association Name="FK__Address__City__3E52440B">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__Region__3F466844">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__Street__403A8C7D">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Owner__OwnerAddr__1367E606">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="DriverAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TheftFoun__CaseA__4D94879B">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="TheftFoundedCar">
+              <PropertyRef Name="CaseAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehiclePa__CarBr__4F7CD00D">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="VehiclePassport" Type="Self.VehiclePassport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="VehiclePassport">
+              <PropertyRef Name="CarBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Car__CarOwner__33D4B598">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Car" Type="Self.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Insur__47DBAE45">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="InsuranceCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OwnerChan__Chang__49C3F6B7">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="OwnerChangeHistory" Type="Self.OwnerChangeHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="OwnerChangeHistory">
+              <PropertyRef Name="ChangeCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TheftFoun__CaseC__4E88ABD4">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="TheftFoundedCar">
+              <PropertyRef Name="CaseCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehiclePa__Vehic__5165187F">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="VehiclePassport" Type="Self.VehiclePassport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="VehiclePassport">
+              <PropertyRef Name="VehiclePassportCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Documents__OrgNa__4AB81AF0">
+          <End Role="OrgName" Type="Self.OrgName" Multiplicity="1" />
+          <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgName">
+              <PropertyRef Name="OrgNameID" />
+            </Principal>
+            <Dependent Role="DocumentsIssueOrganization">
+              <PropertyRef Name="OrgName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DriverLic__Licen__2E1BDC42">
+          <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="1" />
+          <End Role="DriverLicense" Type="Self.DriverLicense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentsIssueOrganization">
+              <PropertyRef Name="OrgID" />
+            </Principal>
+            <Dependent Role="DriverLicense">
+              <PropertyRef Name="LicenseIssueOrg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passport__Passpo__286302EC">
+          <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentsIssueOrganization">
+              <PropertyRef Name="OrgID" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="PassportIssueOrg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver_In__Drive__76969D2E">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Driver_Insurance" Type="Self.Driver_Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Driver_Insurance">
+              <PropertyRef Name="Driver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DriverLic__Licne__2F10007B">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="DriverLicense" Type="Self.DriverLicense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="DriverLicense">
+              <PropertyRef Name="LicneseDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OwnerChan__NewOw__52593CB8">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="OwnerChangeHistory" Type="Self.OwnerChangeHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="OwnerChangeHistory">
+              <PropertyRef Name="NewOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passport__Passpo__29572725">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="PassportDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver_In__Insur__75A278F5">
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
+          <End Role="Driver_Insurance" Type="Self.Driver_Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="InsuranceID" />
+            </Principal>
+            <Dependent Role="Driver_Insurance">
+              <PropertyRef Name="Insurance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Insur__5165187F">
+          <End Role="InsuranceCompany" Type="Self.InsuranceCompany" Multiplicity="0..1" />
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceCompany">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="InsuranceCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehiclePa__CarMo__5070F446">
+          <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
+          <End Role="VehiclePassport" Type="Self.VehiclePassport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="VehiclePassport">
+              <PropertyRef Name="CarModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TheftFoun__CaseS__5812160E">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="TheftFoundedCar">
+              <PropertyRef Name="CaseStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GIBDD_Suv_DorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" />
+          <EntitySet Name="Car" EntityType="Self.Car" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="DocumentsIssueOrganization" EntityType="Self.DocumentsIssueOrganization" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" />
+          <EntitySet Name="Driver_Insurance" EntityType="Self.Driver_Insurance" />
+          <EntitySet Name="DriverLicense" EntityType="Self.DriverLicense" />
+          <EntitySet Name="Insurance" EntityType="Self.Insurance" />
+          <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" />
+          <EntitySet Name="Model" EntityType="Self.Model" />
+          <EntitySet Name="OrgName" EntityType="Self.OrgName" />
+          <EntitySet Name="OwnerChangeHistory" EntityType="Self.OwnerChangeHistory" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
+          <EntitySet Name="TheftFoundedCar" EntityType="Self.TheftFoundedCar" />
+          <EntitySet Name="VehiclePassport" EntityType="Self.VehiclePassport" />
+          <AssociationSet Name="FK__Address__City__3E52440B" Association="Self.FK__Address__City__3E52440B">
+            <End Role="City" EntitySet="City" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__Region__3F466844" Association="Self.FK__Address__Region__3F466844">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__Street__403A8C7D" Association="Self.FK__Address__Street__403A8C7D">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Owner__OwnerAddr__1367E606" Association="Self.FK__Owner__OwnerAddr__1367E606">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TheftFoun__CaseA__4D94879B" Association="Self.FK__TheftFoun__CaseA__4D94879B">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehiclePa__CarBr__4F7CD00D" Association="Self.FK__VehiclePa__CarBr__4F7CD00D">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="VehiclePassport" EntitySet="VehiclePassport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Car__CarOwner__33D4B598" Association="Self.FK__Car__CarOwner__33D4B598">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Insur__47DBAE45" Association="Self.FK__Insurance__Insur__47DBAE45">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Insurance" EntitySet="Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OwnerChan__Chang__49C3F6B7" Association="Self.FK__OwnerChan__Chang__49C3F6B7">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="OwnerChangeHistory" EntitySet="OwnerChangeHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TheftFoun__CaseC__4E88ABD4" Association="Self.FK__TheftFoun__CaseC__4E88ABD4">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehiclePa__Vehic__5165187F" Association="Self.FK__VehiclePa__Vehic__5165187F">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="VehiclePassport" EntitySet="VehiclePassport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Documents__OrgNa__4AB81AF0" Association="Self.FK__Documents__OrgNa__4AB81AF0">
+            <End Role="OrgName" EntitySet="OrgName" />
+            <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DriverLic__Licen__2E1BDC42" Association="Self.FK__DriverLic__Licen__2E1BDC42">
+            <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
+            <End Role="DriverLicense" EntitySet="DriverLicense" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passport__Passpo__286302EC" Association="Self.FK__Passport__Passpo__286302EC">
+            <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver_In__Drive__76969D2E" Association="Self.FK__Driver_In__Drive__76969D2E">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Driver_Insurance" EntitySet="Driver_Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DriverLic__Licne__2F10007B" Association="Self.FK__DriverLic__Licne__2F10007B">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="DriverLicense" EntitySet="DriverLicense" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OwnerChan__NewOw__52593CB8" Association="Self.FK__OwnerChan__NewOw__52593CB8">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="OwnerChangeHistory" EntitySet="OwnerChangeHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passport__Passpo__29572725" Association="Self.FK__Passport__Passpo__29572725">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver_In__Insur__75A278F5" Association="Self.FK__Driver_In__Insur__75A278F5">
+            <End Role="Insurance" EntitySet="Insurance" />
+            <End Role="Driver_Insurance" EntitySet="Driver_Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Insur__5165187F" Association="Self.FK__Insurance__Insur__5165187F">
+            <End Role="InsuranceCompany" EntitySet="InsuranceCompany" />
+            <End Role="Insurance" EntitySet="Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehiclePa__CarMo__5070F446" Association="Self.FK__VehiclePa__CarMo__5070F446">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="VehiclePassport" EntitySet="VehiclePassport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TheftFoun__CaseS__5812160E" Association="Self.FK__TheftFoun__CaseS__5812160E">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GIBDD_Suv_DorModelStoreContainer" CdmEntityContainer="GIBDD_Suv_DorEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Car">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
+                <ScalarProperty Name="CarRegistrationDate" ColumnName="CarRegistrationDate" />
+                <ScalarProperty Name="vin" ColumnName="vin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentsIssueOrganization">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.DocumentsIssueOrganization">
+              <MappingFragment StoreEntitySet="DocumentsIssueOrganization">
+                <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Driver">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="DriverSurname" ColumnName="DriverSurname" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DriverPatronymic" ColumnName="DriverPatronymic" />
+                <ScalarProperty Name="DriverAddress" ColumnName="DriverAddress" />
+                <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+                <ScalarProperty Name="DriverDateOfBirth" ColumnName="DriverDateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Driver_Insurance">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Driver_Insurance">
+              <MappingFragment StoreEntitySet="Driver_Insurance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="Driver" ColumnName="Driver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DriverLicense">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.DriverLicense">
+              <MappingFragment StoreEntitySet="DriverLicense">
+                <ScalarProperty Name="LisenseID" ColumnName="LisenseID" />
+                <ScalarProperty Name="LicensetSeries" ColumnName="LicensetSeries" />
+                <ScalarProperty Name="LicensetNum" ColumnName="LicensetNum" />
+                <ScalarProperty Name="LicenseIssueOrg" ColumnName="LicenseIssueOrg" />
+                <ScalarProperty Name="LicneseDriver" ColumnName="LicneseDriver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurance">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Insurance">
+              <MappingFragment StoreEntitySet="Insurance">
+                <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+                <ScalarProperty Name="InsuranceCar" ColumnName="InsuranceCar" />
+                <ScalarProperty Name="InsuranceCompany" ColumnName="InsuranceCompany" />
+                <ScalarProperty Name="InsurancePayment" ColumnName="InsurancePayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsuranceCompany">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.InsuranceCompany">
+              <MappingFragment StoreEntitySet="InsuranceCompany">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Model">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgName">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.OrgName">
+              <MappingFragment StoreEntitySet="OrgName">
+                <ScalarProperty Name="OrgNameID" ColumnName="OrgNameID" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerChangeHistory">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.OwnerChangeHistory">
+              <MappingFragment StoreEntitySet="OwnerChangeHistory">
+                <ScalarProperty Name="ChangeID" ColumnName="ChangeID" />
+                <ScalarProperty Name="ChangeCar" ColumnName="ChangeCar" />
+                <ScalarProperty Name="NewOwner" ColumnName="NewOwner" />
+                <ScalarProperty Name="StartOwningDate" ColumnName="StartOwningDate" />
+                <ScalarProperty Name="EndOwningDate" ColumnName="EndOwningDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passport">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Passport">
+              <MappingFragment StoreEntitySet="Passport">
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
+                <ScalarProperty Name="PassportNum" ColumnName="PassportNum" />
+                <ScalarProperty Name="PassportIssueOrg" ColumnName="PassportIssueOrg" />
+                <ScalarProperty Name="PassportDriver" ColumnName="PassportDriver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheftFoundedCar">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.TheftFoundedCar">
+              <MappingFragment StoreEntitySet="TheftFoundedCar">
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="CaseCar" ColumnName="CaseCar" />
+                <ScalarProperty Name="CaseDate" ColumnName="CaseDate" />
+                <ScalarProperty Name="CaseAddress" ColumnName="CaseAddress" />
+                <ScalarProperty Name="CaseStatus" ColumnName="CaseStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehiclePassport">
+            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.VehiclePassport">
+              <MappingFragment StoreEntitySet="VehiclePassport">
+                <ScalarProperty Name="VehiclePassportID" ColumnName="VehiclePassportID" />
+                <ScalarProperty Name="VehiclePassportCar" ColumnName="VehiclePassportCar" />
+                <ScalarProperty Name="VehiclePassportNum" ColumnName="VehiclePassportNum" />
+                <ScalarProperty Name="EngineNum" ColumnName="EngineNum" />
+                <ScalarProperty Name="CarGovNum" ColumnName="CarGovNum" />
+                <ScalarProperty Name="CarBrand" ColumnName="CarBrand" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="ManufactureYear" ColumnName="ManufactureYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

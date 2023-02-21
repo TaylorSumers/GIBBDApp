@@ -28,54 +28,60 @@ namespace GIBBDApp
             cbxStreet.ItemsSource = cont.Street.ToList();
             cbxPassOrg.ItemsSource = cont.OrgName.ToList();
             cbxLicOrg.ItemsSource = cont.OrgName.ToList();
-            /*
-            Driver NewDriver = new Driver();
-            NewDriver.DriverSurname = "xxx";
-            Address NewAddress = new Address();
-            NewAddress.PostCode = 123;
-            tbxPostCode.DataContext = NewAddress;
-            */
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Driver NewDriver = new Driver();
-            NewDriver.DriverSurname = tbxSurname.Text;
-            NewDriver.DriverName = tbxName.Text;
-            NewDriver.DriverPatronymic = tbxPatronymic.Text;
-            NewDriver.DriverExperience = Convert.ToInt32(tbxExperience.Text);
-            NewDriver.DriverDateOfBirth = dtpDateOfBirth.SelectedDate;
 
-            Address NewAddress = new Address();
-            NewAddress.PostCode = Convert.ToInt32(tbxPostCode.Text);
-            NewAddress.Region = Convert.ToInt32(cbxRegion.SelectedValue);
-            NewAddress.City = Convert.ToInt32(cbxCity.SelectedValue);
-            NewAddress.Street = Convert.ToInt32(cbxStreet.SelectedValue);
-            NewAddress.House = tbxHouse.Text;
-
-            Passport NewPassport = new Passport
+            var PasIsOrg = cont.DocumentsIssueOrganization.Where(el => el.OrgName == (int)cbxPassOrg.SelectedValue && el.DeptCode == tbxPassDept.Text).ToList();
+            if (PasIsOrg.Count == 0)
             {
-                PassportSeries = Convert.ToInt32(tbxPassSeries.Text),
-                PassportNum = Convert.ToInt32(tbxPassNum.Text),
-                PassportIssueOrg = Convert.ToInt32(cbxPassOrg.SelectedValue),
-                Driver = NewDriver
-            };
+                DocumentsIssueOrganization NewOrg = new DocumentsIssueOrganization
+                {
+                    OrgName = (int)cbxPassOrg.SelectedValue,
+                    DeptCode = tbxPassDept.Text
+                };
+            }
+            //Driver NewDriver = new Driver
+            //{
+            //    DriverSurname = tbxSurname.Text,
+            //    DriverName = tbxName.Text,
+            //    DriverPatronymic = tbxPatronymic.Text,
+            //    DriverExperience = Convert.ToInt32(tbxExperience.Text),
+            //    DriverDateOfBirth = dtpDateOfBirth.SelectedDate
+            //};
 
-            DriverLicense NewLicense = new DriverLicense
-            {
-                LicensetSeries = Convert.ToInt32(tbxPassSeries.Text),
-                LicensetNum = Convert.ToInt32(tbxPassNum.Text),
-                LicenseIssueOrg = Convert.ToInt32(cbxPassOrg.SelectedValue),
-                Driver = NewDriver
-            };
+            //Address NewAddress = new Address()
+            //{
+            //    PostCode = Convert.ToInt32(tbxPostCode.Text),
+            //    Region = Convert.ToInt32(cbxRegion.SelectedValue),
+            //    City = Convert.ToInt32(cbxCity.SelectedValue),
+            //    Street = Convert.ToInt32(cbxStreet.SelectedValue),
+            //    House = tbxHouse.Text
+            //};
 
-            NewDriver.Address = NewAddress;
+            //Passport NewPassport = new Passport
+            //{
+            //    PassportSeries = Convert.ToInt32(tbxPassSeries.Text),
+            //    PassportNum = Convert.ToInt32(tbxPassNum.Text),
+            //    PassportIssueOrg = Convert.ToInt32(cbxPassOrg.SelectedValue),
+            //    Driver = NewDriver
+            //};
 
-            cont.Address.Add(NewAddress);
-            cont.Driver.Add(NewDriver);
-            cont.Passport.Add(NewPassport);
-            cont.DriverLicense.Add(NewLicense);
-            cont.SaveChanges();
+            //DriverLicense NewLicense = new DriverLicense
+            //{
+            //    LicensetSeries = Convert.ToInt32(tbxPassSeries.Text),
+            //    LicensetNum = Convert.ToInt32(tbxPassNum.Text),
+            //    LicenseIssueOrg = Convert.ToInt32(cbxPassOrg.SelectedValue),
+            //    Driver = NewDriver
+            //};
+            //NewDriver.Address = NewAddress;
+
+            //cont.Address.Add(NewAddress);
+            //cont.Driver.Add(NewDriver);
+            //cont.Passport.Add(NewPassport);
+            //cont.DriverLicense.Add(NewLicense);
+            //cont.SaveChanges();
         }
     }
 }

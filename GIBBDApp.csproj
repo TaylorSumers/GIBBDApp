@@ -225,6 +225,8 @@
       <DependentUpon>GIBDDModel.edmx</DependentUpon>
       <LastGenOutput>GIBDDModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scr\GIBDDScr.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

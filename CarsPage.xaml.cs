@@ -21,7 +21,7 @@ namespace GIBBDApp
     /// </summary>
     public partial class CarsPage : Page
     {
-        static GIBDD_Suv_DorEntities cont = new GIBDD_Suv_DorEntities();
+        static GIBDDEntities cont = new GIBDDEntities();
 
         static IEnumerable<dynamic> Cars = (from Car in cont.Car
                       join Driver in cont.Driver on Car.CarOwner equals Driver.DriverID

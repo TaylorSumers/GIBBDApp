@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GIBBDApp"
         mc:Ignorable="d"
-        Title="Водитель" Height="800" Width="450">
+        Title="Водитель" Height="800" Width="450"
+        MinHeight="800" MinWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.6*"/>
@@ -37,8 +38,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Margin="5">
-            <TextBox Name="tbxName" FontSize="18" Margin="0,2,10,0" Text="{Binding DriverName}"/>
-            <TextBox Name="tbxSurname" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverSurname}"/>
+            <TextBox Name="tbxName" FontSize="18" Margin="0,2,10,0" Text="{Binding DriverSurname}"/>
+            <TextBox Name="tbxSurname" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverName}"/>
             <TextBox Name="tbxPatronymic" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverPatronymic}"/>
             <TextBox Name="tbxExperience" FontSize="18" Margin="0,5,10,0" Text="{Binding DriverExperience}"/>
             <DatePicker Name="dtpDateOfBirth" FontSize="15" Margin="0,5,10,0" SelectedDate="{Binding DriverDateOfBirth}"/>
@@ -49,13 +50,14 @@
             <TextBox Name="tbxHouse" FontSize="18" Margin="0,5,10,0" Text="{Binding House}"/>
             <TextBox Name="tbxPassSeries" FontSize="18" Margin="0,55,10,0" Text="{Binding PassportSeries}"/>
             <TextBox Name="tbxPassNum" FontSize="18" Margin="0,5,10,0" Text="{Binding PassportNum}"/>
-            <ComboBox Name="cbxPassOrg" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="OrgNameID" DisplayMemberPath="OrganizationName" SelectedValue="{Binding PassportIssueOrg}"/>
-            <TextBox Name="tbxPassDept" FontSize="18" Margin="0,5,10,0"/>
-            <TextBox Name="tbxLicSeries" FontSize="18" Margin="0,55,10,0"/>
-            <TextBox Name="tbxLicNum" FontSize="18" Margin="0,5,10,0"/>
-            <ComboBox Name="cbxLicOrg" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="OrgNameID" DisplayMemberPath="OrganizationName"/>
-            <TextBox Name="tbxLicDept" FontSize="18" Margin="0,5,10,0"/>
+            <ComboBox Name="cbxPassOrg" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="OrgNameID" DisplayMemberPath="OrganizationName" SelectedValue="{Binding OrgName}"/>
+            <TextBox Name="tbxPassDept" FontSize="18" Margin="0,5,10,0" Text="{Binding DeptCode}"/>
+            <TextBox Name="tbxLicSeries" FontSize="18" Margin="0,55,10,0" Text="{Binding LicensetSeries}"/>
+            <TextBox Name="tbxLicNum" FontSize="18" Margin="0,5,10,0" Text="{Binding LicensetNum}"/>
+            <ComboBox Name="cbxLicOrg" FontSize="16" Margin="0,5,10,0" IsEditable="True" SelectedValuePath="OrgNameID" DisplayMemberPath="OrganizationName" SelectedValue="{Binding OrgName}"/>
+            <TextBox Name="tbxLicDept" FontSize="18" Margin="0,5,10,0" Text="{Binding DeptCode}"/>
         </StackPanel>
+        
         <Button Name="btnSave" Content="Сохранить" FontSize="15" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="30" Width="150" Margin="10" Click="btnSave_Click"/>
     </Grid>
 </Window>

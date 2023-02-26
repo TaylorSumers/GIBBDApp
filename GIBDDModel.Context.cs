@@ -13,10 +13,10 @@ namespace GIBBDApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GIBDD_Suv_DorEntities : DbContext
+    public partial class GIBDDEntities : DbContext
     {
-        public GIBDD_Suv_DorEntities()
-            : base("name=GIBDD_Suv_DorEntities")
+        public GIBDDEntities()
+            : base("name=GIBDDEntities")
         {
         }
     

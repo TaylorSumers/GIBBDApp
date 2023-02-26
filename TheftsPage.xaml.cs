@@ -20,7 +20,7 @@ namespace GIBBDApp
     /// </summary>
     public partial class TheftsPage : Page
     {
-        static GIBDD_Suv_DorEntities cont = new GIBDD_Suv_DorEntities();
+        static GIBDDEntities cont = new GIBDDEntities();
 
         static IEnumerable<dynamic> Thefts = (from Theft in cont.TheftFoundedCar
                          join Car in cont.Car on Theft.CaseCar equals Car.CarID

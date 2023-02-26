@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GIBDD_Suv_DorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GIBDDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -219,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Documents__OrgNa__4AB81AF0">
+        <Association Name="FK__Documents__OrgNa__5DCAEF64">
           <End Role="OrgName" Type="Self.OrgName" Multiplicity="1" />
           <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -291,7 +291,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Insurance__Insur__5165187F">
+        <Association Name="FK__Insurance__Insur__6477ECF3">
           <End Role="InsuranceCompany" Type="Self.InsuranceCompany" Multiplicity="0..1" />
           <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -387,7 +387,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TheftFoun__CaseS__5812160E">
+        <Association Name="FK__TheftFoun__CaseS__6B24EA82">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
           <ReferentialConstraint>
@@ -435,7 +435,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GIBDD_Suv_DorModelStoreContainer">
+        <EntityContainer Name="GIBDDModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
@@ -471,7 +471,7 @@
             <End Role="Driver" EntitySet="Driver" />
             <End Role="Car" EntitySet="Car" />
           </AssociationSet>
-          <AssociationSet Name="FK__Documents__OrgNa__4AB81AF0" Association="Self.FK__Documents__OrgNa__4AB81AF0">
+          <AssociationSet Name="FK__Documents__OrgNa__5DCAEF64" Association="Self.FK__Documents__OrgNa__5DCAEF64">
             <End Role="OrgName" EntitySet="OrgName" />
             <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
           </AssociationSet>
@@ -495,7 +495,7 @@
             <End Role="Car" EntitySet="Car" />
             <End Role="Insurance" EntitySet="Insurance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Insurance__Insur__5165187F" Association="Self.FK__Insurance__Insur__5165187F">
+          <AssociationSet Name="FK__Insurance__Insur__6477ECF3" Association="Self.FK__Insurance__Insur__6477ECF3">
             <End Role="InsuranceCompany" EntitySet="InsuranceCompany" />
             <End Role="Insurance" EntitySet="Insurance" />
           </AssociationSet>
@@ -527,7 +527,7 @@
             <End Role="Car" EntitySet="Car" />
             <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
           </AssociationSet>
-          <AssociationSet Name="FK__TheftFoun__CaseS__5812160E" Association="Self.FK__TheftFoun__CaseS__5812160E">
+          <AssociationSet Name="FK__TheftFoun__CaseS__6B24EA82" Association="Self.FK__TheftFoun__CaseS__6B24EA82">
             <End Role="Status" EntitySet="Status" />
             <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
           </AssociationSet>
@@ -548,7 +548,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GIBDD_Suv_DorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GIBDDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -602,7 +602,7 @@
           <Property Name="OrgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrgName" Type="Int32" Nullable="false" />
           <Property Name="DeptCode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="OrgName1" Relationship="Self.FK__Documents__OrgNa__4AB81AF0" FromRole="DocumentsIssueOrganization" ToRole="OrgName" />
+          <NavigationProperty Name="OrgName1" Relationship="Self.FK__Documents__OrgNa__5DCAEF64" FromRole="DocumentsIssueOrganization" ToRole="OrgName" />
           <NavigationProperty Name="DriverLicense" Relationship="Self.FK__DriverLic__Licen__2E1BDC42" FromRole="DocumentsIssueOrganization" ToRole="DriverLicense" />
           <NavigationProperty Name="Passport" Relationship="Self.FK__Passport__Passpo__286302EC" FromRole="DocumentsIssueOrganization" ToRole="Passport" />
         </EntityType>
@@ -656,7 +656,7 @@
           <Property Name="InsurancePayment" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <NavigationProperty Name="Car" Relationship="Self.FK__Insurance__Insur__47DBAE45" FromRole="Insurance" ToRole="Car" />
           <NavigationProperty Name="Driver_Insurance" Relationship="Self.FK__Driver_In__Insur__75A278F5" FromRole="Insurance" ToRole="Driver_Insurance" />
-          <NavigationProperty Name="InsuranceCompany1" Relationship="Self.FK__Insurance__Insur__5165187F" FromRole="Insurance" ToRole="InsuranceCompany" />
+          <NavigationProperty Name="InsuranceCompany1" Relationship="Self.FK__Insurance__Insur__6477ECF3" FromRole="Insurance" ToRole="InsuranceCompany" />
         </EntityType>
         <EntityType Name="InsuranceCompany">
           <Key>
@@ -664,7 +664,7 @@
           </Key>
           <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Insurance" Relationship="Self.FK__Insurance__Insur__5165187F" FromRole="InsuranceCompany" ToRole="Insurance" />
+          <NavigationProperty Name="Insurance" Relationship="Self.FK__Insurance__Insur__6477ECF3" FromRole="InsuranceCompany" ToRole="Insurance" />
         </EntityType>
         <EntityType Name="Model">
           <Key>
@@ -680,7 +680,7 @@
           </Key>
           <Property Name="OrgNameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DocumentsIssueOrganization" Relationship="Self.FK__Documents__OrgNa__4AB81AF0" FromRole="OrgName" ToRole="DocumentsIssueOrganization" />
+          <NavigationProperty Name="DocumentsIssueOrganization" Relationship="Self.FK__Documents__OrgNa__5DCAEF64" FromRole="OrgName" ToRole="DocumentsIssueOrganization" />
         </EntityType>
         <EntityType Name="OwnerChangeHistory">
           <Key>
@@ -720,7 +720,7 @@
           </Key>
           <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TheftFoundedCar" Relationship="Self.FK__TheftFoun__CaseS__5812160E" FromRole="Status" ToRole="TheftFoundedCar" />
+          <NavigationProperty Name="TheftFoundedCar" Relationship="Self.FK__TheftFoun__CaseS__6B24EA82" FromRole="Status" ToRole="TheftFoundedCar" />
         </EntityType>
         <EntityType Name="Street">
           <Key>
@@ -741,7 +741,7 @@
           <Property Name="CaseStatus" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK__TheftFoun__CaseA__4D94879B" FromRole="TheftFoundedCar" ToRole="Address" />
           <NavigationProperty Name="Car" Relationship="Self.FK__TheftFoun__CaseC__4E88ABD4" FromRole="TheftFoundedCar" ToRole="Car" />
-          <NavigationProperty Name="Status" Relationship="Self.FK__TheftFoun__CaseS__5812160E" FromRole="TheftFoundedCar" ToRole="Status" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__TheftFoun__CaseS__6B24EA82" FromRole="TheftFoundedCar" ToRole="Status" />
         </EntityType>
         <EntityType Name="VehiclePassport">
           <Key>
@@ -891,7 +891,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Documents__OrgNa__4AB81AF0">
+        <Association Name="FK__Documents__OrgNa__5DCAEF64">
           <End Role="OrgName" Type="Self.OrgName" Multiplicity="1" />
           <End Role="DocumentsIssueOrganization" Type="Self.DocumentsIssueOrganization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -987,7 +987,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Insurance__Insur__5165187F">
+        <Association Name="FK__Insurance__Insur__6477ECF3">
           <End Role="InsuranceCompany" Type="Self.InsuranceCompany" Multiplicity="0..1" />
           <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1011,7 +1011,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TheftFoun__CaseS__5812160E">
+        <Association Name="FK__TheftFoun__CaseS__6B24EA82">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="TheftFoundedCar" Type="Self.TheftFoundedCar" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1023,7 +1023,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GIBDD_Suv_DorEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GIBDDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="Brand" EntityType="Self.Brand" />
           <EntitySet Name="Car" EntityType="Self.Car" />
@@ -1087,7 +1087,7 @@
             <End Role="Car" EntitySet="Car" />
             <End Role="VehiclePassport" EntitySet="VehiclePassport" />
           </AssociationSet>
-          <AssociationSet Name="FK__Documents__OrgNa__4AB81AF0" Association="Self.FK__Documents__OrgNa__4AB81AF0">
+          <AssociationSet Name="FK__Documents__OrgNa__5DCAEF64" Association="Self.FK__Documents__OrgNa__5DCAEF64">
             <End Role="OrgName" EntitySet="OrgName" />
             <End Role="DocumentsIssueOrganization" EntitySet="DocumentsIssueOrganization" />
           </AssociationSet>
@@ -1119,7 +1119,7 @@
             <End Role="Insurance" EntitySet="Insurance" />
             <End Role="Driver_Insurance" EntitySet="Driver_Insurance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Insurance__Insur__5165187F" Association="Self.FK__Insurance__Insur__5165187F">
+          <AssociationSet Name="FK__Insurance__Insur__6477ECF3" Association="Self.FK__Insurance__Insur__6477ECF3">
             <End Role="InsuranceCompany" EntitySet="InsuranceCompany" />
             <End Role="Insurance" EntitySet="Insurance" />
           </AssociationSet>
@@ -1127,7 +1127,7 @@
             <End Role="Model" EntitySet="Model" />
             <End Role="VehiclePassport" EntitySet="VehiclePassport" />
           </AssociationSet>
-          <AssociationSet Name="FK__TheftFoun__CaseS__5812160E" Association="Self.FK__TheftFoun__CaseS__5812160E">
+          <AssociationSet Name="FK__TheftFoun__CaseS__6B24EA82" Association="Self.FK__TheftFoun__CaseS__6B24EA82">
             <End Role="Status" EntitySet="Status" />
             <End Role="TheftFoundedCar" EntitySet="TheftFoundedCar" />
           </AssociationSet>
@@ -1137,9 +1137,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GIBDD_Suv_DorModelStoreContainer" CdmEntityContainer="GIBDD_Suv_DorEntities">
+        <EntityContainerMapping StorageEntityContainer="GIBDDModelStoreContainer" CdmEntityContainer="GIBDDEntities">
           <EntitySetMapping Name="Address">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Address">
+            <EntityTypeMapping TypeName="GIBDDModel.Address">
               <MappingFragment StoreEntitySet="Address">
                 <ScalarProperty Name="AddressID" ColumnName="AddressID" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
@@ -1151,7 +1151,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Brand">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Brand">
+            <EntityTypeMapping TypeName="GIBDDModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
                 <ScalarProperty Name="BrandID" ColumnName="BrandID" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
@@ -1159,7 +1159,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Car">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Car">
+            <EntityTypeMapping TypeName="GIBDDModel.Car">
               <MappingFragment StoreEntitySet="Car">
                 <ScalarProperty Name="CarID" ColumnName="CarID" />
                 <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
@@ -1169,7 +1169,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.City">
+            <EntityTypeMapping TypeName="GIBDDModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
@@ -1177,7 +1177,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DocumentsIssueOrganization">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.DocumentsIssueOrganization">
+            <EntityTypeMapping TypeName="GIBDDModel.DocumentsIssueOrganization">
               <MappingFragment StoreEntitySet="DocumentsIssueOrganization">
                 <ScalarProperty Name="OrgID" ColumnName="OrgID" />
                 <ScalarProperty Name="OrgName" ColumnName="OrgName" />
@@ -1186,7 +1186,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Driver">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Driver">
+            <EntityTypeMapping TypeName="GIBDDModel.Driver">
               <MappingFragment StoreEntitySet="Driver">
                 <ScalarProperty Name="DriverID" ColumnName="DriverID" />
                 <ScalarProperty Name="DriverSurname" ColumnName="DriverSurname" />
@@ -1199,7 +1199,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Driver_Insurance">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Driver_Insurance">
+            <EntityTypeMapping TypeName="GIBDDModel.Driver_Insurance">
               <MappingFragment StoreEntitySet="Driver_Insurance">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Insurance" ColumnName="Insurance" />
@@ -1208,7 +1208,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DriverLicense">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.DriverLicense">
+            <EntityTypeMapping TypeName="GIBDDModel.DriverLicense">
               <MappingFragment StoreEntitySet="DriverLicense">
                 <ScalarProperty Name="LisenseID" ColumnName="LisenseID" />
                 <ScalarProperty Name="LicensetSeries" ColumnName="LicensetSeries" />
@@ -1219,7 +1219,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Insurance">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Insurance">
+            <EntityTypeMapping TypeName="GIBDDModel.Insurance">
               <MappingFragment StoreEntitySet="Insurance">
                 <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
                 <ScalarProperty Name="InsuranceCar" ColumnName="InsuranceCar" />
@@ -1229,7 +1229,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InsuranceCompany">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.InsuranceCompany">
+            <EntityTypeMapping TypeName="GIBDDModel.InsuranceCompany">
               <MappingFragment StoreEntitySet="InsuranceCompany">
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
@@ -1237,7 +1237,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Model">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Model">
+            <EntityTypeMapping TypeName="GIBDDModel.Model">
               <MappingFragment StoreEntitySet="Model">
                 <ScalarProperty Name="ModelID" ColumnName="ModelID" />
                 <ScalarProperty Name="ModelName" ColumnName="ModelName" />
@@ -1245,7 +1245,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrgName">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.OrgName">
+            <EntityTypeMapping TypeName="GIBDDModel.OrgName">
               <MappingFragment StoreEntitySet="OrgName">
                 <ScalarProperty Name="OrgNameID" ColumnName="OrgNameID" />
                 <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
@@ -1253,7 +1253,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OwnerChangeHistory">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.OwnerChangeHistory">
+            <EntityTypeMapping TypeName="GIBDDModel.OwnerChangeHistory">
               <MappingFragment StoreEntitySet="OwnerChangeHistory">
                 <ScalarProperty Name="ChangeID" ColumnName="ChangeID" />
                 <ScalarProperty Name="ChangeCar" ColumnName="ChangeCar" />
@@ -1264,7 +1264,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Passport">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Passport">
+            <EntityTypeMapping TypeName="GIBDDModel.Passport">
               <MappingFragment StoreEntitySet="Passport">
                 <ScalarProperty Name="PassportID" ColumnName="PassportID" />
                 <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
@@ -1275,7 +1275,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Region">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Region">
+            <EntityTypeMapping TypeName="GIBDDModel.Region">
               <MappingFragment StoreEntitySet="Region">
                 <ScalarProperty Name="RegionID" ColumnName="RegionID" />
                 <ScalarProperty Name="RegionName" ColumnName="RegionName" />
@@ -1283,7 +1283,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Status">
+            <EntityTypeMapping TypeName="GIBDDModel.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
@@ -1291,7 +1291,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Street">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.Street">
+            <EntityTypeMapping TypeName="GIBDDModel.Street">
               <MappingFragment StoreEntitySet="Street">
                 <ScalarProperty Name="StreetID" ColumnName="StreetID" />
                 <ScalarProperty Name="StreetName" ColumnName="StreetName" />
@@ -1299,7 +1299,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TheftFoundedCar">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.TheftFoundedCar">
+            <EntityTypeMapping TypeName="GIBDDModel.TheftFoundedCar">
               <MappingFragment StoreEntitySet="TheftFoundedCar">
                 <ScalarProperty Name="CaseID" ColumnName="CaseID" />
                 <ScalarProperty Name="CaseCar" ColumnName="CaseCar" />
@@ -1310,7 +1310,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VehiclePassport">
-            <EntityTypeMapping TypeName="GIBDD_Suv_DorModel.VehiclePassport">
+            <EntityTypeMapping TypeName="GIBDDModel.VehiclePassport">
               <MappingFragment StoreEntitySet="VehiclePassport">
                 <ScalarProperty Name="VehiclePassportID" ColumnName="VehiclePassportID" />
                 <ScalarProperty Name="VehiclePassportCar" ColumnName="VehiclePassportCar" />

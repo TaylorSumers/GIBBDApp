@@ -21,81 +21,113 @@ namespace GIBBDApp
     /// </summary>
     public partial class DriversPage : Page
     {
-        static GIBDD_Suv_DorEntities cont = new GIBDD_Suv_DorEntities();
+        static GIBDDEntities cont;
 
-        static IEnumerable<dynamic> Drivers = (from Driver in cont.Driver
-                      join Address in cont.Address on Driver.DriverAddress equals Address.AddressID
-                      join City in cont.City on Address.City equals City.CityID
-                      join Street in cont.Street on Address.Street equals Street.StreetID
-                      join Region in cont.Region on Address.Region equals Region.RegionID
-                      join Passport in cont.Passport on Driver.DriverID equals Passport.PassportDriver
-                      join DriverLicense in cont.DriverLicense on Driver.DriverID equals DriverLicense.LicneseDriver
-                      select new
-                      {
-                          Driver.DriverID,
-                          Driver.DriverName,
-                          Driver.DriverSurname,
-                          Driver.DriverPatronymic,
-                          Driver.DriverExperience,
-                          Driver.DriverDateOfBirth,
-                          Address.PostCode,
-                          Region.RegionName,
-                          City.CityName,
-                          Street.StreetName,
-                          Address.House,
-                          Passport.PassportSeries,
-                          Passport.PassportNum,
-                          Passport.PassportIssueOrg,
-                          DriverLicense.LicensetNum,
-                          DriverLicense.LicensetSeries,
-                          DriverLicense.LicenseIssueOrg
-                      }).ToList();
-        static IEnumerable<dynamic> Passports = (from Driver in Drivers
-                        join Org in cont.DocumentsIssueOrganization on Driver.PassportIssueOrg equals Org.OrgID
-                        join OrgName in cont.OrgName on Org.OrgName equals OrgName.OrgNameID
-                        select new {Driver.DriverID, Org.DeptCode, OrgName.OrganizationName }).ToList();
-        static IEnumerable<dynamic> DriverLicenses = (from Driver in Drivers
-                        join Org in cont.DocumentsIssueOrganization on Driver.LicenseIssueOrg equals Org.OrgID
-                        join OrgName in cont.OrgName on Org.OrgName equals OrgName.OrgNameID
-                        select new { Driver.DriverID, Org.DeptCode, OrgName.OrganizationName }).ToList();
-        public DriversPage()
+        static IEnumerable<dynamic> Drivers;
+        static IEnumerable<dynamic> Passports;
+        static IEnumerable<dynamic> DriverLicenses;
+        void DataRefresh() //Метод для обновления информации после добавления/изменения/удаления
         {
-            InitializeComponent();
-
+            cont = new GIBDDEntities();
+            //Информация о водителях
+            Drivers = (from Driver in cont.Driver
+                       join Address in cont.Address on Driver.DriverAddress equals Address.AddressID
+                       join City in cont.City on Address.City equals City.CityID
+                       join Street in cont.Street on Address.Street equals Street.StreetID
+                       join Region in cont.Region on Address.Region equals Region.RegionID
+                       join Passport in cont.Passport on Driver.DriverID equals Passport.PassportDriver
+                       join DriverLicense in cont.DriverLicense on Driver.DriverID equals DriverLicense.LicneseDriver
+                       select new
+                       {
+                            Driver.DriverID,
+                            Driver.DriverName,
+                            Driver.DriverSurname,
+                            Driver.DriverPatronymic,
+                            Driver.DriverExperience,
+                            Driver.DriverDateOfBirth,
+                            Address.PostCode,
+                            Region.RegionName,
+                            City.CityName,
+                            Street.StreetName,
+                            Address.House,
+                            Passport.PassportSeries,
+                            Passport.PassportNum,
+                            Passport.PassportIssueOrg,
+                            DriverLicense.LicensetNum,
+                            DriverLicense.LicensetSeries,
+                            DriverLicense.LicenseIssueOrg
+                        }).ToList();
+            Passports = (from Driver in Drivers
+                         join Org in cont.DocumentsIssueOrganization on Driver.PassportIssueOrg equals Org.OrgID
+                         join OrgName in cont.OrgName on Org.OrgName equals OrgName.OrgNameID
+                         select new { Driver.DriverID, Org.DeptCode, OrgName.OrganizationName }).ToList();
+            DriverLicenses = (from Driver in Drivers
+                              join Org in cont.DocumentsIssueOrganization on Driver.LicenseIssueOrg equals Org.OrgID
+                              join OrgName in cont.OrgName on Org.OrgName equals OrgName.OrgNameID
+                              select new { Driver.DriverID, Org.DeptCode, OrgName.OrganizationName }).ToList();
             dtgDrivers.ItemsSource = Drivers;
         }
 
-        private void dtgDrivers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public DriversPage()
         {
-            tbPostIndex.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().PostCode.ToString();
-            tbRegion.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().RegionName.ToString();
-            tbCity.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().CityName.ToString();
-            tbStreet.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().StreetName.ToString();
-            tbHouse.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().House.ToString();
-
-            tbPassNum.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().PassportNum.ToString();
-            tbPassSeries.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().PassportSeries.ToString();
-            tbPassOrg.Text = Passports.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().OrganizationName.ToString();
-            tbPassDepCode.Text = Passports.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().DeptCode.ToString();
-
-            tbLicenseNum.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().LicensetNum.ToString();
-            tbLicenseSeries.Text = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().LicensetSeries.ToString();
-            tbLicenseOrg.Text = DriverLicenses.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().OrganizationName.ToString();
-            tbLicenseDepCode.Text = DriverLicenses.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single().DeptCode.ToString();
+            InitializeComponent();
+            DataRefresh();
         }
 
-        private void AddDriver_Click(object sender, RoutedEventArgs e)
+        private void dtgDrivers_SelectionChanged(object sender, SelectionChangedEventArgs e) //Заполнение полной информации сбоку при изменении выбранного водителя
         {
-            Window w = new DriverAddWindow();
-            w.ShowDialog();
+            if(dtgDrivers.SelectedValue != null)
+            {
+                var SelectedDriverInfo = Drivers.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single();
+                tbPostIndex.Text = SelectedDriverInfo.PostCode.ToString();
+                tbRegion.Text = SelectedDriverInfo.RegionName.ToString();
+                tbCity.Text = SelectedDriverInfo.CityName.ToString();
+                tbStreet.Text = SelectedDriverInfo.StreetName.ToString();
+                tbHouse.Text = SelectedDriverInfo.House.ToString();
+
+                var PassportInfo = Passports.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single();
+                tbPassNum.Text = SelectedDriverInfo.PassportNum.ToString();
+                tbPassSeries.Text = SelectedDriverInfo.PassportSeries.ToString();
+                tbPassOrg.Text = PassportInfo.OrganizationName.ToString();
+                tbPassDepCode.Text = PassportInfo.DeptCode.ToString();
+
+                var LicenseInfo = DriverLicenses.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single();
+                tbLicenseNum.Text = SelectedDriverInfo.LicensetNum.ToString();
+                tbLicenseSeries.Text = SelectedDriverInfo.LicensetSeries.ToString();
+                tbLicenseOrg.Text = LicenseInfo.OrganizationName.ToString();
+                tbLicenseDepCode.Text = LicenseInfo.DeptCode.ToString();
+            }
+
+        }
+
+        private void AddDriver_Click(object sender, RoutedEventArgs e) 
+        {
+            Window w = new DriverAddWindow(0); //При создании нового водителя в окно DriverAddWindow в качестве
+            w.ShowDialog();                    //DriverID передаётся 0
+            DataRefresh();
         }
 
         private void dtgDrivers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Driver EditingDriver = cont.Driver.Where(item => item.DriverID == (int)dtgDrivers.SelectedValue).Single();
-            Passport EditingDriverPassport = cont.Passport.Where(item=>item.PassportDriver == (int)dtgDrivers.SelectedValue).Single();
-            DriverLicense EditingDriverLicense = cont.DriverLicense.Where(item => item.LicneseDriver == (int)dtgDrivers.SelectedValue).Single();
-            Address EditingDriverAddress = cont.Address.Where(item=>item.AddressID == EditingDriver.DriverAddress).Single();
+            int DriverID = (int)dtgDrivers.SelectedValue; //При двойном клике по водитею в DataGrid
+            Window w = new DriverAddWindow(DriverID);     //открывается окно для изменения информации
+            w.ShowDialog();
+            DataRefresh();
+        }
+
+        private void DelDriver_Click(object sender, RoutedEventArgs e)
+        {
+            int DriverID = (int)dtgDrivers.SelectedValue;
+            Driver DelDr = cont.Driver.Where(item => item.DriverID == DriverID).Single();
+            MessageBoxResult res = MessageBox.Show("Вы действительно хотите удалить данные об этом водителе?", 
+            "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (res == MessageBoxResult.Yes)
+            {
+                cont.Driver.Remove(DelDr);
+                cont.SaveChanges();
+                DataRefresh();
+            }
+
         }
     }
 }
